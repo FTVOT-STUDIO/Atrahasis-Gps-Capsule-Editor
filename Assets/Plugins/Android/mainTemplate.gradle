@@ -1,0 +1,86 @@
+// Android Resolver Repos Start
+([rootProject] + (rootProject.subprojects as List)).each { project ->
+    project.repositories {
+        def unityProjectPath = $/file:///**DIR_UNITYPROJECT**/$.replace("\\", "/")
+        maven {
+            url "https://maven.google.com"
+        }
+        maven {
+            url "https://maven.google.com/" // Assets/GoogleMobileAds/Editor/GoogleMobileAdsDependencies.xml:7
+        }
+        maven {
+            url (unityProjectPath + "/Assets/GeneratedLocalRepo/GooglePlayGames/Editor/m2repository") // Assets/GooglePlayGames/Editor/GooglePlayGamesPluginDependencies.xml:11
+        }
+        mavenLocal()
+        jcenter()
+        mavenCentral()
+    }
+}
+// Android Resolver Repos End
+apply plugin: 'com.android.library'
+**APPLY_PLUGINS**
+
+dependencies {
+    //implementation 'com.unity3d.ads:unity-ads:4.7.0'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+// Android Resolver Dependencies Start     
+    implementation 'com.google.android.gms:play-services-ads:22.0.0' // 최신 Google Mobile Ads SDK 버전으로 업데이트         
+    constraints {
+        implementation('androidx.work:work-runtime:2.8.0') { // 최신 androidx.work 라이브러리 버전
+            because '''androidx.work:work-runtime:2.1.0 pulled from
+            play-services-ads has a bug using PendingIntent without
+            FLAG_IMMUTABLE or FLAG_MUTABLE and will fail in Apps
+            targeting S+.'''
+        }
+    }
+// Android Resolver Dependencies Start
+    implementation 'androidx.fragment:fragment:1.5.5' // 최신 androidx.fragment 라이브러리 버전
+    implementation 'com.google.android.gms:play-services-ads:22.0.0' // 최신 Google Mobile Ads SDK 버전
+    implementation 'com.google.games:gpgs-plugin-support:0.10.12' // 최신 Google Play Games Services SDK 버전
+// Android Resolver Dependencies End
+**DEPS**}
+
+// Android Resolver Exclusions Start
+android {
+  packagingOptions {
+      exclude ('/lib/armeabi/*' + '*')
+      exclude ('/lib/mips/*' + '*')
+      exclude ('/lib/mips64/*' + '*')
+      exclude ('/lib/x86/*' + '*')
+      exclude ('/lib/x86_64/*' + '*')
+  }
+}
+// Android Resolver Exclusions End
+android {
+    compileSdkVersion **APIVERSION**
+    buildToolsVersion '30.0.3'
+    //buildToolsVersion '**BUILDTOOLS**'
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        minSdkVersion **MINSDKVERSION**
+        targetSdkVersion **TARGETSDKVERSION**
+        ndk {
+            abiFilters **ABIFILTERS**
+        }
+        versionCode **VERSIONCODE**
+        versionName '**VERSIONNAME**'
+        consumerProguardFiles 'proguard-unity.txt'**USER_PROGUARD**
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    aaptOptions {
+        noCompress = **BUILTIN_NOCOMPRESS** + unityStreamingAssets.tokenize(', ')
+        ignoreAssetsPattern = "!.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~"
+    }**PACKAGING_OPTIONS**
+}**REPOSITORIES**
+**IL_CPP_BUILD_SETUP**
+**SOURCE_BUILD_SETUP**
+**EXTERNAL_SOURCES**

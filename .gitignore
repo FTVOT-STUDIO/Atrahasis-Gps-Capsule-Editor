@@ -1,0 +1,69 @@
+# =========================
+# Unity generated folders
+# =========================
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+
+# =========================
+# Unity build output folders
+# =========================
+아트라하시스 수박게임/
+*_Data/
+*.exe
+*.apk
+*.aab
+*.app
+*.unitypackage
+
+# =========================
+# Visual Studio / VS Code / Rider
+# =========================
+.vs/
+.vscode/
+.idea/
+
+*.csproj
+*.sln
+*.suo
+*.user
+*.userprefs
+*.pidb
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+
+# =========================
+# Unity generated files
+# =========================
+*.tmp
+*.svd
+*.booproj
+
+# =========================
+# Unity crash / memory capture
+# =========================
+sysinfo.txt
+[Mm]emoryCaptures/
+Recordings/
+
+# =========================
+# Android signing keys
+# 중요: GitHub에 올리지 않는 것을 권장합니다.
+# =========================
+*.keystore
+*.jks
+user.keystore
+[Kk]eystore/
+
+# =========================
+# OS files
+# =========================
+.DS_Store
+Thumbs.db
+desktop.ini
