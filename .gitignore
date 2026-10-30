@@ -67,3 +67,6 @@ user.keystore
 .DS_Store
 Thumbs.db
 desktop.ini
+# 유료 에셋 (DOTween Pro) - 직접 설치 필요
+/Assets/Plugins/Demigiant/
+/Assets/Plugins/Demigiant.meta
